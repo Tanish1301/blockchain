@@ -135,5 +135,44 @@ class cns3{
 }
 
 
+sha-md5
+import java.security.MessageDigest;
+
+public class SHA1Example {
+
+    public static void main(String[] args) {
+        try {
+            // Step 1: Create a MessageDigest object for SHA-1
+            MessageDigest sha1Digest = MessageDigest.getInstance("SHA-1");
+
+            // Step 2: Provide the text for which you want to calculate the hash
+            String text = "Hello, SHA-1!";
+
+            // Step 3: Convert the text to bytes
+            byte[] textBytes = text.getBytes();
+
+            // Step 4: Update the MessageDigest with the text bytes
+            sha1Digest.update(textBytes);
+
+            // Step 5: Calculate the hash
+            byte[] sha1Hash = sha1Digest.digest();
+
+            // Step 6: Convert the hash to a hexadecimal string
+            StringBuilder hexStringBuilder = new StringBuilder();
+            for (byte b : sha1Hash) {
+                hexStringBuilder.append(String.format("%02x", b));
+            }
+            String sha1Hex = hexStringBuilder.toString();
+
+            // Step 7: Print the result
+            System.out.println("Original text: " + text);
+            System.out.println("SHA-1 hash: " + sha1Hex);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
 
 
