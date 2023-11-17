@@ -106,4 +106,34 @@ public class CaesarCipher {
 
 
 
+//andandxor
+class cns3{
+    public static void main(String[] args) {
+        String input = "Hello world";
+        System.out.println("Original String: " + input );
+
+        String resultString = andXorWith127(input);
+
+        System.out.println("Result String: ");
+        printAsciiValues(resultString);
+    }
+
+    private static String andXorWith127(String input) {
+        char[] charArray = input.toCharArray();
+
+        for (int i = 0; i < charArray.length; i++){
+            charArray[i] = (char) (charArray[i] & 127);
+            charArray[i] = (char) (charArray[i] ^ 127);
+        }
+        return new String(charArray);
+    }
+    private static void printAsciiValues(String input) {
+        for (char c : input.toCharArray()){
+            System.out.println((int) c + " ");
+        }
+    }
+}
+
+
+
 
