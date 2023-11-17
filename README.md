@@ -53,6 +53,57 @@ class DESExample{
     }
 }
 
+public class CaesarCipher {
+    public static void main(String[] args) {
+        String plaintext = "Hello, World!";
+        int shiftKey = 3;
+
+        // Encryption
+        String encryptedText = encrypt(plaintext, shiftKey);
+        System.out.println("Encrypted Text: " + encryptedText);
+
+        // Decryption
+        String decryptedText = decrypt(encryptedText, shiftKey);
+        System.out.println("Decrypted Text: " + decryptedText);
+    }
+
+    // Encryption method
+    public static String encrypt(String plaintext, int shiftKey) {
+        StringBuilder ciphertext = new StringBuilder();
+
+        for (int i = 0; i < plaintext.length(); i++) {
+            char ch = plaintext.charAt(i);
+
+            if (Character.isLetter(ch)) {
+                char encryptedChar = (char) ((ch + shiftKey - 'A') % 26 + 'A');
+                ciphertext.append(encryptedChar);
+            } else {
+                ciphertext.append(ch);
+            }
+        }
+
+        return ciphertext.toString();
+    }
+
+    // Decryption method
+    public static String decrypt(String ciphertext, int shiftKey) {
+        StringBuilder decryptedText = new StringBuilder();
+
+        for (int i = 0; i < ciphertext.length(); i++) {
+            char ch = ciphertext.charAt(i);
+
+            if (Character.isLetter(ch)) {
+                char decryptedChar = (char) ((ch - shiftKey - 'A' + 26) % 26 + 'A');
+                decryptedText.append(decryptedChar);
+            } else {
+                decryptedText.append(ch);
+            }
+        }
+
+        return decryptedText.toString();
+    }
+}
+
 
 
 
